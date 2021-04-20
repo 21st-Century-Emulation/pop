@@ -1,0 +1,8 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+GET     /status                     controllers.StatusController.status()
+GET     /api/v1/debug/readMemory    controllers.DebugReadMemoryController.read()
+POST    /api/v1/execute             controllers.ExecuteController.execute()

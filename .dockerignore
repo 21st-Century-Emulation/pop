@@ -1,0 +1,10 @@
+target/
+.metals/
+.devcontainer/
+.bloop/
+.vscode/
+logs/
+project/target/
+project/.bloop
+test.sh
+Dockerfile
