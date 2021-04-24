@@ -15,7 +15,7 @@ case class CpuFlags(var sign: Boolean, var zero: Boolean, var auxCarry: Boolean,
 
 case class CpuState(var a: Int, var b: Int, var c: Int, var d: Int, var e: Int, var h: Int, var l: Int, var stackPointer: Int, programCounter: Int, var cycles: Long, flags: CpuFlags)
 
-case class Cpu(opcode: Int, state: CpuState)
+case class Cpu(opcode: Int, id: String, state: CpuState)
 
 object Cpu {
   implicit val formatCpuFlags: Format[CpuFlags] = Json.format[CpuFlags]
