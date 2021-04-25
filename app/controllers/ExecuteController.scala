@@ -13,7 +13,7 @@ import scala.concurrent.Future
 
 case class CpuFlags(var sign: Boolean, var zero: Boolean, var auxCarry: Boolean, var parity: Boolean, var carry: Boolean)
 
-case class CpuState(var a: Int, var b: Int, var c: Int, var d: Int, var e: Int, var h: Int, var l: Int, var stackPointer: Int, programCounter: Int, var cycles: Long, flags: CpuFlags)
+case class CpuState(var a: Int, var b: Int, var c: Int, var d: Int, var e: Int, var h: Int, var l: Int, var stackPointer: Int, programCounter: Int, var cycles: Long, flags: CpuFlags, interruptsEnabled: Boolean)
 
 case class Cpu(opcode: Int, id: String, state: CpuState)
 
