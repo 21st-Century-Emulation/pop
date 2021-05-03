@@ -42,7 +42,7 @@ class ExecuteController @Inject() (val ws: WSClient, implicit val ec: ExecutionC
 
             combinedFuture.map { case (highByte, lowByte) => {
               cpu.state.cycles += 10;
-              cpu.state.stackPointer += 2;
+              cpu.state.stackPointer = (cpu.state.stackPointer + 2) & 0xFFFF;
               cpu.opcode match {
                 case 0xC1 => {
                   cpu.state.b = highByte;
