@@ -33,7 +33,7 @@ class ExecuteController @Inject() (val ws: WSClient, implicit val ec: ExecutionC
       case Some(json) => json.asOpt[Cpu] match {
         case Some(cpu) => {
           val lowByteFuture = ws.url(this.readMemoryApi).withQueryStringParameters(("address", s"${cpu.state.stackPointer}"), ("id", cpu.id)).get().map(response => response.body.toInt);
-          val highByteFuture = ws.url(this.readMemoryApi).withQueryStringParameters(("address", s"${cpu.state.stackPointer + 1}"), ("id", cpu.id)).get().map(response => response.body.toInt);
+          val highByteFuture = ws.url(this.readMemoryApi).withQueryStringParameters(("address", s"${(cpu.state.stackPointer + 1) & 0xFFFF}"), ("id", cpu.id)).get().map(response => response.body.toInt);
 
           val combinedFuture = for {
             hb <- highByteFuture
